@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DARKEST DUNGEON</title>
+    <link rel="stylesheet" href="css/style.css">
+    <title>THE DARKEST DUNGEON</title>
+</head>
+
+<body>
+    <header>
+        <div class="hgroup">
+            <h1>THE DARKEST DUNGEON</h1>
+            <h2></h2>
+            <h3 id=intro>Entra y lidera a un equipo de héroes imperfectos a través de enrevesados bosques, laberintos
+                olvidados, criptas en ruinas y más allá.</h3>
+        </div>
+    </header>
+    <div>
+        <section id="resultado" class="plantilla_de_resultado">
+            <h3 id="v-f">Victoria</h3>
+            <h4>Ruinas</h4>
+            <div class="ronda-container"></div>
+            <div class="face-final"></div>
+            <div class="v-f"></div>
+            <img src="assets/images/interface/iconos/confirm_final-b.png" alt="" onclick="cambiarEscenario();">
+        </section>
+        <section class="face-boss-container">
+            <img class="face.background" src="assets/images/interface/plantillas/face.background.png" alt="face.background">
+            <div class="close_icon"><img src="assets/images/interface/plantillas/close_icon.png" alt="close_icon" onclick="faceJefe();"></div>
+            <div class="face-inicial"></div>
+        </section>
+       
+        
+        <!--Sala de batalla-->
+        <article id="battle-hall" class="battle">
+            <!--selector de heroes-->
+            <div class="dungeons">
+                <div class="dungeon-slider-close">
+                    <div class="text-slider"></div>
+                </div>
+                <img class="label-dungeon" src="assets/images/interface/separador.png" alt="">
+                <img class="missionOne" src="assets/images/interface/map/missionOne.png"
+                    onclick="labelDungeonIn('Ruinas','Las Ruinas son la primera mazmorra que se puede explorar. Las antiguas salas y sede del poder de la region, ahora son un laberinto negro y cambiante de pasillos firmemente bajo el control de los Nigromantes y su ejército de muertos vivientes en constante expansión.', 'Derrota a los muertos para así, llegar asta el nigromante que los ha invocado', '1', 'cargarEscenario()', 'One')">
+                <img class="missionTwo" src="assets/images/interface/map/missionTwo.png"
+                    onclick="labelDungeonIn('Bosque', 'El Bosque es la segunda mazmorra que se puede explorar. Los únicos caminos a la ciudad pasan por estos bosques, lo que lo convierte en un área importante para limpiar y proteger.', 'Derrota a las bestias y bandidos que invaden los caminos hasta enfrentar a los mas oscuros horrores del bosque', '2', '#', 'Two')">
+                <img class="missionThree" src="assets/images/interface/map/missionThree.png"
+                    onclick="labelDungeonIn('Catacumbas', 'Las Catacumbas son la tercera mazmorra que se puede explorar. Un sistema increíblemente antiguo de acueductos y túneles construido para un propósito desconocido, ahora es un pozo negro ahogado por cadáveres que alberga a los hombres-bestia hambrientos y plagados de enfermedades, y todos aquellos lo suficientemente trastornados o monstruosos como para aliarse con ellos.', 'Derrota a las aberraciones porcinas que infectan los acueductos', '3', '#', 'Three')">
+                <img class="missionFour" src="assets/images/interface/map/missionFour.png"
+                    onclick="labelDungeonIn('Castillo', 'El Castillo es un pozo infernal lleno de horrores sobrenaturales, y aquellos que los adoran, que llega hasta el Corazón del mundo. Para ganar el juego, debes completar 2 misiones en esta ubicación.','No se parece en nada a los desafíos que ha enfrentado antes. Cada encuentro tiene muchas posibilidades de ser el último. Entra y enfrenta al mal antiguo.', '4', '#', 'Four')">
+                <div class="div-map"><img class="imgMap" src="assets/images/interface/map.jpg"></div>
+            </div>
+            <div id="selection">
+                <div id="final-raid-button">
+                    <img class="button-luz-1" src="assets/images/interface/panel/final-raid/cuervo-luz-1.png" alt="">
+                    <img class="button-luz-2" src="assets/images/interface/panel/final-raid/cuervo-luz-2.png" alt="">
+                    <img class="button-cuervo" src="assets/images/interface/panel/final-raid/cuervo.png" alt=""onclick="resultado()">
+                </div>
+                <div id="buttonCombat">
+                    <img id="imgCombat" src="assets/images/interface/iconos/announcement_combat.png" onclick="finalizarTurno();"><!-- -->
+                </div>
+            </div>
+            <div class="column-container">
+                <!--columnas de enemigos-->
+                <div style="margin-right:50px">
+                    <!--posicion 3-->
+                    <div id="enemySpot3"></div>
+                    <!--posicion 2-->
+                    <div id="enemySpot2"></div>
+                    <!--posicion 1-->
+                    <div id="enemySpot1"></div>
+                    <!--animaciones de ataque-->
+                    <div class="animacionEnemy"></div>
+                    <div class="animacionEnemyEfecto"></div>
+                    <div class="contenedorDamageEnemy">0</div>
+                    <!--barras de vida-->
+                    <div id="vidahpEnemy1" class="vidaenemy health-bar"></div>
+                    <div id="vidahpEnemy2" class="vidaenemy health-bar"></div>
+                    <div id="vidahpEnemy3" class="vidaenemy health-bar"></div>
+                    <div id="vidahpBoss1" class="health-bar-boss"></div>
+                  
+                </div>
+                <!--columnas de heroes-->
+                <div style="margin-left: 50px;">
+                    <!--posicion 3-->
+                    <div id="position3" class='columnaN1 heroe'>
+                        <img class='lenght' src="assets/images/chapters/arbalestera/animacion/arbalestera.gif" alt="arbalestera" onclick="positionHeal('hpHero3')">
+                    </div>
+                    <!--posicion 2-->
+                    <div id="position2" class='columnaN1 heroe'>
+                        <img class='lenght' src="assets/images/chapters/barbara/animacion/barbara.gif" alt="barbara" onclick="positionHeal('hpHero2')">
+                    </div>
+                    <!--posicion 1 assets/images/chapters/barbara/animacion/hellion_dead.png-->
+                    <div id="position1" class='columnaN1 heroe'>
+                        <img class='lenght' src="assets/images/chapters/cruzado/animacion/cruzado.gif" alt="cruzado" onclick="positionHeal('hpHero1')">
+                    </div>
+                    <!--animaciones de ataque-->
+                    <div class="animacionHero"></div>
+                    <div class="animacionHeroEfecto"></div>
+                    <div class="contenedorDamageHero">0</div>
+                    <div id="vidaCruzado" class="heroLive health-bar"></div>
+                    <div id="vidaBarbara" class="heroLive health-bar"></div>
+                    <div id="vidaArbalestera" class="heroLive health-bar"></div>
+                </div>
+            </div>
+    </div>
+    </article>
+    <!--  Tablas de habilidad y stats  -->
+    <div id="BattleStateAll">
+        <article class="battleStateBannerLeft">
+            <div id="bannerSide" class="banner"></div>
+
+            <div id="infoHero" class="banner">
+                <div id="statsHeroUp">
+                    <!--retrado de heroe-->
+                    <div id="portraitHero"></div>
+                    <!--nombre de heroe-->
+                    <div id="nameHero"></div>
+                    <!--lista de hablidades-->
+                    <div id="skillCruzado" class="skillsHero">
+                        <div id="skillCruzado1" class="skillHero" onclick="showSkill(0,1,'Cruzado',1,cruzado)">
+                            <img src="assets/images/chapters/cruzado/skills/cruzado.ability.one.png" alt="">
+                        </div>
+                        <div id="skillCruzado2" class="skillHero" onclick="showSkill(0,2,'Cruzado','1-2',cruzado)">
+                            <img src="assets/images/chapters/cruzado/skills/cruzado.ability.two.png" alt="">
+                        </div>
+                        <div id="skillCruzado3" class="skillHero" onclick="showSkill(0,3,'Cruzado','heal-2',cruzado)">
+                            <img src="assets/images/chapters/cruzado/skills/cruzado.ability.three.png" alt="">
+                        </div>
+                    </div>
+                    <div id="skillBarbara" class="skillsHero">
+                        <!--lista de hablidades-->
+                        <div id="skillBarbara1" class="skillHero" onclick="showSkill(1,1,'Barbara',1,barbara)">
+                            <img src="assets/images/chapters/barbara/skills/barbara.ability.one.png" alt="">
+                        </div>
+                        <div id="skillBarbara2" class="skillHero" onclick="showSkill(1,2,'Barbara','2-3',barbara)">
+                            <img src="assets/images/chapters/barbara/skills/barbara.ability.two.png" alt="">
+                        </div>
+                        <div id="skillBarbara3" class="skillHero" onclick="showSkill(1,3,'Barbara',3,barbara)">
+                            <img src="assets/images/chapters/barbara/skills/barbara.ability.three.png" alt="">
+                        </div>
+                    </div>
+                    <div id="skillArbalestera" class="skillsHero">
+                        <div id="skillArbalestera1" class="skillHero" onclick="showSkill(2,1,'Arbalestera',1,arbalestera)">
+                            <img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.one.png" alt="">
+                        </div>
+                        <div id="skillArbalestera2" class="skillHero" onclick="showSkill(2,2,'Arbalestera',3,arbalestera)">
+                            <img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.two.png" alt="">
+                        </div>
+                        <div id="skillArbalestera3" class="skillHero" onclick="showSkill(2,3,'Arbalestera','heal-1',arbalestera)">
+                            <img src="assets/images/chapters/arbalestera/skills/arbalestera.ability.three.png" alt="">
+                        </div>
+                    </div>
+
+                </div>
+                <div id="statsHeroDown">
+                    <!--vida y equipo de heroe-->
+                    <div id="statsHero"></div>
+                    <div id="equip">
+                        <h3>Habilidad</h3>
+                        <div class="infoSkill"></div>
+                    </div>
+                    <div id="trinkets">
+                        <h3>Atacar</h3>
+                        <img onclick="botonAtaque();" src="assets/images/interface/iconos/confirm_button.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </article>
+        <article class="battleStateBannerRight">
+            <!--tabla de contenido enemigo-->
+            <div id="statsEnemy" class="banner">
+                <div id="statsEnemyUp">
+                    <div id="nameEnemy"></div>
+                    <!--nombre de enemigo-->
+                    <div id="hpEnemy"></div>
+                    <!--vida de enemigo-->
+                </div>
+                <div id="statsEnemyDown">
+                    <!--habilidades de enemigo-->
+                    <div></div>
+                    <div></div>
+                </div>
+            </div>
+
+            <div id="bannerSide" class="banner"></div>
+        </article>
+    </div>
+    </div>
+    <section class="audio-container">
+        <div class="audio-hero">
+            <div>
+                <!--audio-cruzado-->
+                <audio id="cruzadoSkill1" volumen="-1000" src="assets/audio/hero/cruzado/crusado_smite.wav"></audio>
+                <audio id="cruzadoSkill2" src="assets/audio/hero/cruzado/crusado_escrituras.wav"></audio>
+                <audio id="cruzadoSkill3" src="assets/audio/hero/cruzado/crusado_battleheal.wav"></audio>
+            </div>
+            <div>
+                <!--audio-barbara-->
+                <audio id="barbaraSkill1" src="assets/audio/hero/barbara/Wicked Hack.wav"></audio>
+                <audio id="barbaraSkill2" src="assets/audio/hero/barbara/Breakthrough.wav"></audio>
+                <audio id="barbaraSkill3" src="assets/audio/hero/barbara/Barbaric YAWP!.wav"></audio>
+            </div>
+            <div>
+                <audio id="arbalesteraSkill1-a" src="assets/audio/hero/arbalestera/sniper_shot.wav"></audio>
+                <audio id="arbalesteraSkill1-b" src="assets/audio/hero/arbalestera/sniper_shot_imp.wav"></audio>
+                <audio id="arbalesteraSkill2-a" src="assets/audio/hero/arbalestera/suppress.wav"></audio>
+                <audio id="arbalesteraSkill2-b" src="assets/audio/hero/arbalestera/suppress_imp.wav"></audio>
+                <audio id="arbalesteraSkill3" src="assets/audio/hero/arbalestera/bandage.wav"></audio>
+            </div>
+            <div class="audio-enemy">
+                <div>
+                    <audio id="esqEscuderoSkill1"
+                        src="assets/audio/enemy/ruinas/esqueletoEscudero/sk_axestrike.wav"></audio>
+                    <audio id="esqEscuderoSkill2"
+                        src="assets/audio/enemy/ruinas/esqueletoEscudero/sk_shieldbash.wav"></audio>
+                </div>
+                <div>
+                    <audio id="esqGuerreroSkill1"
+                        src="assets/audio/enemy/ruinas/esqueletoGuerrero/sk_attack.wav"></audio>
+                </div>
+                <div>
+                    <audio id="esqArbalesteroSkill1"
+                        src="assets/audio/enemy/ruinas/esqueletoArbalestero/sk_crossbowshot.wav"></audio>
+                </div>
+                <div id="nigromante">
+                    <audio id="bossSkill1" src="assets/audio/enemy/ruinas/nigromante/nec_flesh.wav"></audio>
+                </div>
+                <audio id="impactShield" src="assets/audio/hero/impact_shield.wav"></audio>
+                <audio id="enemyTurn" src="assets/audio/enemy/general/enemyturn.wav"></audio>
+            </div>
+            <div class="audio-interface">
+                <audio id="combatDown" src="assets/audio/intarface/Combat_down.wav"></audio>
+                <audio id="deathsdoor" src="assets/audio/intarface/deathsdoor.wav"></audio>
+                <audio id="combat_start" src="assets/audio/intarface/combat_start.wav"></audio>
+                <audio id="combat_round" src="assets/audio/intarface/combat_round.wav"></audio>
+            </div>
+
+
+    </section>
+    <!-- -->
+
+    <footer>
+        <img src="assets/images/interface/RedHook.jpg" alt="">
+        Trabajo final Version n6.5
+        <a style="color:crimson" href="https://www.darkestdungeon.com/">Derechos reservados RedHook</a>
+    </footer>
+
+    <script type="text/javascript" src="jquery/Jquery.js"></script>
+    <script type="text/javascript" src="script/main.js"></script>
+    <script type="text/javascript" src="script/dom.js"></script>
+
+</body>
+
+</html>

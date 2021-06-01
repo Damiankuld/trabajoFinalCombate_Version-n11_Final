@@ -1,0 +1,1032 @@
+/*Fuente*/
+@font-face{
+    font-family:King_Arthur_Legend;
+    src:url('../fuentes/King_Arthur_Legend.ttf');
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    background-image: url(../assets/images/fondo.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+    color: blanchedalmond;
+    text-align: center;
+    margin:15px;
+    margin: auto;
+}
+header{
+    color:crimson;
+}
+footer, li{
+    text-align: left;
+    background-color: black;
+}
+.map{
+    background-image: url(../assets/images/interface/map.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    width: 80%;
+    border: 1px solid crimson;
+    margin: auto;
+    overflow: hidden;
+}
+.pantalla-de-carga{
+    background-image: url(../assets/images/interface/loading_screen.gif);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    width: 80%;
+    border: 1px solid crimson;
+    margin: auto;
+    overflow: hidden;
+}
+.dungeons{
+    display: none;
+}
+.div-map{
+    position:relative;
+}
+.imgMap{
+    position:absolute;
+    height:100%;
+    width:100%;
+}
+.missionOne{
+    position: absolute;
+    top: 200px;
+    left: 970px;
+}
+.missionTwo{
+    position: absolute;
+    top: 440px;
+}
+.missionThree{
+    position: absolute;
+    top: 320px;
+    left:800px;
+}
+.missionFour
+{position: absolute;
+    top: 60px;
+    left: 1150px;
+}
+.no-disponible{
+    border: 2px solid crimson;
+}
+/*boton-de-cambio-de-face*/
+.face-boss-container{
+    position: absolute;
+    top: 75px;
+    left: 520px;
+    width: 700px;
+    display: none;
+}
+.face-boss-container img{
+    width: 100%;
+}
+.close_icon img{
+    width: 30px;
+    position: relative;
+    top: -505px;
+    left: 250px;
+}
+.face-inicial{
+    position: relative;
+    top: -430px;
+}
+/*seleccion de mision*/
+.mission-hover{
+    background-image: url(../assets/images/interface/map/quest_select_selected.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 150px;  
+}
+/*slider*/
+.dungeon-slider-close{
+    background-image: linear-gradient(black, transparent);
+    height: 600px;
+    width:0px;
+    border: 1px solid greenyellow;
+}
+.dungeon-slider-open{
+    width: 300px;
+}
+.text-slider{
+    display: none;
+    width: 90%;
+    margin: auto;
+}
+.text-slider img{
+    width: 100%;
+    margin-top: 30px;
+}
+.text-slider h1, h4{
+    text-align: center;
+    margin-top: 15px;
+    margin-top: 30px;
+}
+.text-slider p{
+    text-align: left;
+    margin-top: 30px;
+}
+
+/*Sala de batalla*/
+.battle{
+    background-image: url(../assets/images/interface/crypts.room_altar.png);
+    background-size: 1600px;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 600px;
+    width: 1520px;
+    border: 1px solid crimson;
+    margin: auto;
+    /*overflow: hidden;*/
+}
+/*Background tabla de contenido*/
+#BattleStateAll{
+    display: grid;
+    grid-template-columns: auto auto;
+    pad: 0;
+    justify-content: center;
+    align-content: center;
+}
+.battleStateBannerLeft{
+    background-color: transparent;
+    background-image: url(../assets/images/interface/panel/panelLeft.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 254px;
+    width: 760px;
+    border: 1px solid crimson;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    
+}
+.battleStateBannerRight{
+    background-color: transparent;
+    background-image: url(../assets/images/interface/panel/panelRight.png);
+    background-size: 900px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 254px;
+    width: 760px;
+    border: 1px solid crimson;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+/*DIVISION DEL BANNER DE CONTENIDO*/
+#bannerSide{width: 190px;}
+#infoHero{width: 570px;}
+#statsEnemy{
+    width: 555px;
+    font-size: larger;
+}
+
+/******************/
+/*info_de_heroe*/
+#statsHeroUp{
+    display: grid;
+    grid-template-columns: 0.5fr 0.5fr 2fr;
+    height: 110px;
+}
+#statsHeroDown{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    height: 160px;
+}
+#portraitHero{
+    margin: auto;
+}
+#portraitHero img{
+    width: 90%;
+    margin-left: 21px;
+    margin-top: 6px;
+}
+#nameHero{
+    width: 110px;
+}
+#nameHero p{
+    margin-top: 43px;
+    font-size: larger;
+}
+.skillsHero{
+    width: 360px;
+    display: flex;  
+    flex-direction: row; 
+    justify-content: center;
+}
+.skillsHero div{
+    margin: 15px;
+    margin-right: 30px;
+    margin-left: -15px;
+}
+.skillsHero img{
+    width: 75px;
+}
+#statsHero{
+    width: 190px;
+}
+#statsHero p{
+    margin-top: 5px;
+    font-size: larger;
+}
+#equip{
+    width: 160px;
+    margin-left: 8px;
+}
+#equip h3{
+    margin: 5px;
+}
+#equip div{
+    margin-top: 20px;
+}
+#trinkets{
+    width: 200px;
+    margin-left: -30px;
+}
+#trinkets h3{
+    margin: 5px;
+}
+#trinkets img{
+    margin-top: 20px;
+    width: 40%;
+}
+/*selector_de_habilidad*/
+.select_skill{                          /*columnas de enemigos*/
+    height: 410px;
+    width: 200px;
+    float: right;
+}
+.select_skill_hover{
+    background-image: url(../assets/images/interface/iconos/selected_ability.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 85px;
+}
+/*vida-heroe*/
+.health-bar{
+    background-image: url(../assets/images/interface/iconos/health_pip_empty.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    height: 8px;
+    width: 96px;
+}
+.health-bar-boss{
+    background-image: url(../assets/images/interface/iconos/health_pip_empty-boss.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 8px;
+    width: 198px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+.heroLive{
+    top: -55px;
+    padding: 0;
+    margin: 0;
+}
+#vidaCruzado{
+    top: 596px;
+    left: 692px;
+}
+#vidaBarbara{
+    top: 596px;
+    left: 492px;
+}
+#vidaArbalestera{
+    top: 596px;
+    left: 292px;
+}
+#vidahpEnemy1{ 
+    top: 601px;
+    left: 1112px;
+}
+#vidahpEnemy2{
+    top: 601px;
+    left: 1312px;
+}
+#vidahpEnemy3{
+    top: 601px;
+    left: 1512px;
+}
+#vidahpBoss1{
+    display: none;
+    top: 601px;
+    left: 1469px;
+}
+/******************/
+/*info_de_enemigo*/
+#statsEnemyUp{
+    height: 80px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#statsEnemyCenter{
+    height: 70px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+#statsEnemyDown{
+    height: 50px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 40px;
+}
+#nameEnemy{
+    display: grid;
+    grid-template-columns: 1fr; 
+}
+#nameEnemy p{
+    margin: auto;
+}
+#hpEnemy{
+    display: grid;
+    grid-template-columns: 1fr;
+}
+#hpEnemy p{
+    margin: auto;
+}
+/*Escala de personaje*/
+.lenght{
+    height: 350px;
+    margin-top:0px;
+}
+/*Escala de Jefe*/
+.lenght_boss{
+    height: 520px;
+    margin-top: -130px;
+}
+/*Columnas de personaje*/
+.columnaN1{                          /*columnas de heroes*/
+    height: 410px;
+    width: 200px;
+    float: left;  
+}
+.columnaN2{                          /*columnas de enemigos*/
+    height: 410px;
+    width: 200px;
+    float: right;
+}
+.columnaN3{
+    height: 410px;
+    width: 200px;
+    float: right;
+}
+.columnaN3 img{
+    margin-top: -30px;
+    margin-left: -40px;
+    height: 100%;
+    width: 160%;
+}
+.columna-hover{
+    background-image: url(../assets/images/interface/iconos/selected_1.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 210px;    
+}
+.columna-hover-heal{
+    background-image: url(../assets/images/interface/iconos/target_h_1.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 210px;    
+}
+.columnaN2-hover{
+    background-image: url(../assets/images/interface/iconos/target_1.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 200px;
+}
+.columnaN3-hover{
+    background-image: url(../assets/images/interface/iconos/target_2.png); /*selector*/
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: 200px;
+}
+/*************************************************/
+/*buttonCombat*/
+#buttonCombat{
+    margin: auto;
+    height: 180px;
+    width: 190px;
+    display: none;
+}
+#buttonCombat img{
+    height: 130%;
+}
+/*button-final-combat*/
+#final-raid-button{
+    display: none;
+    position: relative;
+    top: -400px;
+}
+.button-cuervo{
+    height: 30%;
+    position: absolute;
+    top: 250px;
+    right: 330px;
+    animation-name: efecto_symbol;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-duration: 12s;
+    animation-delay: 0s;
+}
+.button-luz-1{
+    position: relative;
+    height: 10%;
+    top: -50px;
+    filter: opacity(3);
+    animation-name: efecto_giro_izq;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-duration: 15s;
+    animation-delay: 0s;
+}
+.button-luz-2{
+    position: relative;
+    height: 3%;
+    top: -1450px;
+    filter: opacity(3);
+    animation-name: efecto_giro_der;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in;
+    animation-duration: 15s;
+    animation-delay: 0s;
+}
+@keyframes efecto_giro_izq {
+    100%{transform: rotate(-1.0turn);}
+    25%{filter: opacity(1);}
+}
+@keyframes efecto_giro_der {
+    80%{transform: rotate(1.0turn);}
+    25%{filter: opacity(1);}
+}
+@keyframes efecto_symbol {
+    25%{filter: opacity(1);}
+    70%{transform: saturate(200%)}
+}
+
+/*damage float*/
+#selection{
+    height: 30%;
+    margin: auto;
+}
+.contenedorDamageHero{
+    font-size: 300%;
+    color: red;
+    margin-top: 10px;
+    position: absolute;
+    left: 750px;
+    top: 510px;
+    display: none;
+}
+.contenedorDamageHero-color-green{
+    color: green;
+}
+.contenedorDamageEnemy{
+    font-size: 300%;
+    color: red;
+    margin-top: 10px;
+    position: absolute;
+    left: 960px;
+    top: 510px;
+    display: none;
+}
+
+/*************************************************/
+/*animaciones*/
+.animacionHero{
+    height: 410px;
+    width: 40px;
+    float: left;
+    position: relative;
+    right: 420px;
+    top: -220px;
+}
+.animacionHero img{
+    height: 450px;
+}
+.animacionEnemy{
+    height: 410px;
+    width: 40px;
+    float: right;
+    position: relative;
+    right: 890px;
+}
+.animacionEnemy img{
+    height: 450px;
+    margin-left: -50px;
+    margin-top: 55px;
+}
+.animacionHeroDamage{
+        /*display: none;*/
+        font-size: xx-large;
+        height: 40px;
+        width: 50px;
+        float: left;
+        position: relative;
+        right: 420px;
+        top: 20px;
+}
+.animacionEnemyDamage{
+    /*display: none;*/
+    font-size: xx-large;
+    height: 40px;
+    width: 50px;
+    float: left;
+    position: relative;
+    right: 420px;
+    top: 20px;
+    border: 1px solid green;
+}
+/*******************cruzado*******************/
+/*cruzado animcion skill 1*/
+.animacion-crusado-skill-1{
+    float: left;
+    position: relative;
+    right: -550px;
+    top: 280px;
+}
+.animacion-crusado-skill-1-anim{
+    height: 150px;
+    position: relative;
+    left: -420px;
+    top: -60px;
+}
+/*cruzado animcion skill 2*/
+.animacion-crusado-skill-2-anim{
+    filter: saturate(120%);
+    filter: opacity(.9);
+    height: 430px;
+    
+    position: relative;
+    left: -364px;
+    top: -75px;
+}
+.animacion-crusado-skill-2-body{
+    margin-left: 537px;
+    margin-top: 270px;
+}
+/*cruzado animcion skill 3*/
+.animacion-crusado-skill-3-body{
+    position: relative;
+    left: 530px;
+    top: 30px;
+}
+.skill3-cruzader-heal-1{
+    position: relative;
+    top: 170px;
+}
+.skill3-cruzader-heal-2{
+    position: relative;
+    top: 290px;
+    right: 460px;
+}
+/*******************barbara*******************/
+/*barbara animcion skill 1*/
+.animacion-barbara-skill-1-body{
+    position: relative;
+    left: 520px;
+    top: 280px;
+}
+.animacion-barbara-skill-1-anim{
+    height: 220px;
+    position: relative;
+    left: -460px;
+    top: -120px;
+}
+/*barbara animcion skill 2*/
+.animacion-barbara-skill-2-body{
+    position: relative;
+    left: 590px;
+    top: 130px;
+}
+.animacion-barbara-skill-2-anim{
+    height: 420px;
+    position: relative;
+    left: -245px;
+    top: -45px;
+}
+/*barbara animcion skill 3*/
+.animacion-barbara-skill-3-body{
+    position: relative;
+    left: 520px;
+    top: 150px;
+}
+.animacion-barbara-skill-3-anim{
+    height: 220px;
+    position: relative;
+    left: -130px;
+    top: -190px;
+}
+/*****************arbalestera*****************/
+/*arbalestera animcion skill 1*/
+.animacion-arbalestera-skill-1-body{
+    position: relative;
+    left: 520px;
+    top: 265px;
+}
+.animacion-arbalestera-skill-1-anim{
+    height: 220px;
+    position: relative;
+    left: -130px;
+    top: -190px;
+}
+/*arbalestera animcion skill 2*/
+.animacion-arbalestera-skill-2-body{
+    position: relative;
+    left: 520px;
+    top: 350px;
+}
+.animacion-arbalestera-skill-2-anim{
+    height: 220px;
+    position: relative;
+    left: -130px;
+    top: -190px;
+}
+/*arbalestera animcion skill 3*/
+.animacion-arbalestera-skill-3-body{
+    position: relative;
+    left: 520px;
+    top: 320px;
+}
+.animacion-arbalestera-skill-3-anim{
+    height: 220px;
+    position: relative;
+    left: -130px;
+    top: -190px;
+}
+.skill3-arbalest-heal-1{
+    position: relative;
+    left: 200px;
+    top: -160px;
+}
+.skill3-arbalest-heal-2{
+    position: relative;
+    left: 200px;
+    top: -190px;
+}
+/*******************enemys********************/
+/*hero-defend*/
+.animacion-hero-defend-1{
+    position: absolute;
+    left: 820px;
+    top: 40px;
+}
+.animacion-hero-defend-2{
+    position: absolute;
+    left: 820px;
+    top: -25px;
+}
+.animacion-hero-defend-3{
+    position: absolute;
+    top: 50px;
+    left: 820px;
+    margin-bottom: 0;
+}
+/*enemy-defend*/
+.skeleton-defend-1{
+    position: relative;
+    top: -30px;
+}
+.skeleton-defend-2{
+    position: relative;
+    top: -30px;
+}
+.skeleton-defend-3{
+    position: relative;
+    top: -15px;
+}
+.nigromante-defend{
+    position: relative;
+    top: -105px;
+}
+/*esqueleto escudero-animcion skill*/
+.animacion-skeleton-escudero-skill-1-body{
+    position: relative;
+    top: 15px;
+}
+/*esqueleto escudero-animcion skill*/
+.animacion-skeleton-guerrero-skill-1-body{
+    position: relative;
+    top: 5px;
+    height: 200px;
+}
+.animacion-skeleton-guerrero-skill-1-anim{
+    height: 150px;
+    position: relative;
+    left: 270px;
+    top: 110px;
+}
+/*esqueleto escudero-animcion skill*/
+.animacion-skeleton-Arbalestero-skill-1-body{
+    position: relative;
+    top: 10px;
+}
+.animacion-skeleton-Arbalestero-skill-1-anim{
+    width: 300px;
+    position: absolute;
+    top: 210px;
+    left: 130px;
+}
+/*nigromante-animacion-skill-1*/
+.animacion-boss-skill-1-efect{
+    width: 510px;
+    position: relative;
+    top: 199px;
+    left: 528px;
+}
+.animacion-boss-skill-1-body{
+    position: relative;
+    top: -100px;
+}
+.animacion-boss-skill-2-body{
+    position: relative;
+    top: -200px;
+}
+/*skill-boss-hero*/
+.body-hero-skill3-boss{
+    /*position: relative;
+    left: -750px;*/
+}
+
+/*dead_corpses*/
+.dead{
+    height: 33%;
+    margin-top: 100%;
+}
+.dead-atack{
+    position: relative;
+    top: -20%;
+}
+.deadHero1{
+    height: 55%;
+    margin-top: 59%;
+}
+.deadHero2{
+    height: 37%;
+    margin-top: 90%;
+}
+.deadHero3{
+    height: 40%;
+    margin-top: 88%;
+}
+/*********************************************/
+/***********plantillas-de-resultado***********/
+.plantilla_de_resultado{
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 790px;
+    height: 900px;
+    margin: auto;
+    display: none;
+}
+.plantilla_de_resultado h3{
+    padding-top: 7%;
+    margin: auto;
+    font-size: xx-large;
+}
+.plantilla_de_resultado h4{
+    padding-top: 4.5%;
+    padding-bottom: 3.5%;
+    margin: auto;
+    font-size: x-large;
+}
+.ronda-container{
+    width: 80%;
+    margin: auto;
+    text-align: left;
+    display: flex;
+    flex-direction: column-reverse;
+}
+.ronda-container div div{
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.victory{
+    background-image: url(../assets/images/interface/plantillas/victory.png);
+}
+.defeat{
+    background-image: url(../assets/images/interface/plantillas/defeat.png);
+}
+
+/*ataque multiple*/
+.col-2-hero{
+    display: inline-flex;
+    margin-left: -10%;
+}
+.col-3-hero{
+    display: inline-flex;
+    margin-left: -10%;
+}
+
+/***********************************************************************/
+/***********************************************************************/
+@media only screen and (max-width: 1440px) {
+    /*mapa y misiones*/
+    .map{
+        width: 95%;
+    }
+    .missionOne{
+        top: 190px;
+        left: 720px;
+    }
+    .missionTwo{
+        top: 440px;
+    }
+    .missionThree{
+        top: 320px;
+        left:560px;
+    }
+    .missionFour
+    {position: absolute;
+        top: 90px;
+        left: 870px;
+    }
+    /*Sala de batalla*/
+    .battle{
+        background-image: url(../assets/images/interface/crypts.room_altar.png);
+        background-size: 100%;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 500px;
+        width: 95%;
+        border: 1px solid crimson;
+        margin: auto;
+        overflow: hidden;
+    }
+    /*Background tabla de contenido*/
+    #BattleStateAll{
+        width: 95%;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        pad: 0;
+        justify-content: center;
+        align-content: center;
+        margin: auto;
+    }
+    .battleStateBannerLeft{
+        background-color: transparent;
+        background-image: url(../assets/images/interface/panel/panelLeft.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 225px;
+        width: 100%;
+        border: 1px solid crimson;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        
+    }
+    .battleStateBannerRight{
+        background-color: transparent;
+        background-image: url(../assets/images/interface/panel/panelRight.png);
+        background-size: 900px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 225px;
+        width: 100%;
+        border: 1px solid crimson;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+    }
+    #bannerSide{
+        width: 100%;
+    }
+    #infoHero{
+        width: 100%;
+    }
+    #statsEnemy{
+        width: 555px;
+        font-size: larger;
+    }
+    /******************/
+    /*info_de_heroe*/
+    #statsHeroUp{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 88px;
+        margin-left: 190px;
+    }
+    #statsHeroDown{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        height: 130px;
+    }
+    #portraitHero{
+        margin: auto;
+        margin-top: 5px;
+        margin-left: -12px;
+        position: relative;
+        left: -10px;
+        top: 8px;
+    }
+    #portraitHero img{
+        width: 330%;
+    }
+    #nameHero{
+        width: 110px;
+    }
+    #nameHero p{
+        margin-top: 37px;
+        margin-left: 73px;
+        font-size: larger;
+    }
+    .skillHero{
+        position: relative;
+        top: -3px;
+        left: 30px;
+    }
+    #statsHero{
+        position: relative;
+        top: 8px;
+        left: 185px;
+    }
+    #statsHero p{
+        margin-top: 5px;
+        font-size: larger;
+    }
+    #equip{
+        position: relative;
+        top: 8px;
+        left: 105px;
+    }
+    #equip h3{
+        margin-top: 9px;
+    }
+    #trinkets{
+        position: relative;
+        left: 50px;
+    }
+    #trinkets h3{
+        margin-top: 14px;
+    }
+    #trinkets img{
+        margin-top: 10px;
+    }
+    /******************/
+    /*info_de_enemigo*/
+    #hpEnemy{
+        margin-left: -100px;
+    }
+    .skill-enemy{
+        margin-left: -100px;
+    }
+    /******************/
+    /*buttonCombat*/
+    #selection{
+        height: 20%;
+        margin: auto;
+    }
+    #buttonCombat{
+        margin: auto;
+        height: 180px;
+        width: 190px;
+        display: none;
+    }
+    #buttonCombat img{
+        height: 130%;
+    }
+    /******************/
+    /*barras_de_vida*/
+    #vidaCruzado{
+        top: 517px;
+        left: 536px;
+    }
+    #vidaBarbara{
+        top: 517px;
+        left: 336px;
+    }
+    #vidaArbalestera{
+        top: 517px;
+        left: 136px;
+    }
+    #vidahpEnemy1{ 
+        top: 522px;
+        left: 787px;
+    }
+    #vidahpEnemy2{
+        top: 522px;
+        left: 1188px;
+    }
+    #vidahpEnemy3{
+        top: 522px;
+        left: 987px;
+    }
+    #vidahpBoss1{
+        display: none;
+        top: 602px;
+        left: 1469px;
+    }
+}
